@@ -5,7 +5,9 @@ services:
     container_name: mongo
     image: mongo:latest
     environment:
-      - MONGO_DATABASE="amazon"
+      - MONGO_INITDB_ROOT_USERNAME=root  # Add root username here
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass  # Add root password here
+      - MONGO_INITDB_DATABASE=amazon         # Your database name
     ports:
       - 27017:27017
 
@@ -15,6 +17,9 @@ services:
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongo
       - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root  # MongoDB root username
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass  # MongoDB root password
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin     # Database for authentication (usually 'admin')
     depends_on:
       - mongo
     ports:
