@@ -5,7 +5,10 @@ import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [ProductModule, MongooseModule.forRoot('mongodb://localhost/nest')],
+  imports: [
+    ProductModule,
+    MongooseModule.forRoot('mongodb://localhost/amazon'),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
